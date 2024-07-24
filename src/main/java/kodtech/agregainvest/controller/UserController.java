@@ -1,5 +1,9 @@
 package kodtech.agregainvest.controller;
 
+import kodtech.agregainvest.controller.dto.AccountResponseDto;
+import kodtech.agregainvest.controller.dto.CreateAccountDto;
+import kodtech.agregainvest.controller.dto.CreateUserDto;
+import kodtech.agregainvest.controller.dto.UpdateUserDto;
 import kodtech.agregainvest.entity.User;
 import kodtech.agregainvest.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -59,5 +63,22 @@ public class UserController {
         userService.deleteById(userId);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{userId}/accounts")
+    public ResponseEntity<Void> deleteById(@PathVariable("userId") String userId,
+                                           @RequestBody CreateAccountDto createAccountDto){
+
+        userService.createAccount(userId, createAccountDto);
+
+        return  ResponseEntity.ok().build();
+    }
+    @GetMapping("/{userId}/accounts")
+    public ResponseEntity<List<AccountResponseDto>> ListAccounts(@PathVariable("userId") String userId){
+
+        var accounts = userService.listAccounts(userId);
+
+        return  ResponseEntity.ok(accounts);
+    }
+
 
 }
