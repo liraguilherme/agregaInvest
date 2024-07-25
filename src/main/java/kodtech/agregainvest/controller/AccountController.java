@@ -17,6 +17,7 @@ public class AccountController {
     private AccountService accountService;
 
     public AccountController(AccountService accountService) {
+
         this.accountService = accountService;
     }
 
@@ -26,7 +27,7 @@ public class AccountController {
 
         accountService.associateStock(accountId, dto);
 
-        return  ResponseEntity.ok().build();
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{accountId}/stocks")

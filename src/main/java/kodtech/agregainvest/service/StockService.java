@@ -19,9 +19,9 @@ public class StockService {
 
         // DTO -> ENTITY
         var stock = new Stock(
-          createStockDto.stockId(),
-                createStockDto.description()
+          createStockDto.stockId(), createStockDto.description()
         );
+
         stockRepository.save(stock);
     }
 }

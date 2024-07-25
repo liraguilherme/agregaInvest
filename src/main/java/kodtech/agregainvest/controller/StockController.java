@@ -25,7 +25,9 @@ public class StockController {
 
     @PostMapping
     public ResponseEntity<Void> createStock(@RequestBody CreateStockDto createStockDto){
+
       stockService.createStock(createStockDto);
-        return ResponseEntity.ok().build();
+
+      return ResponseEntity.ok().build();
     }
 }
